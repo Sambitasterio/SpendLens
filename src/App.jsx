@@ -1,24 +1,61 @@
+import { useState } from 'react';
 import { RATES } from './data/rates.js';
 import { EXPENSES } from './data/expenses.js';
+import Sidebar from './components/Sidebar.jsx';
+import Topbar from './components/Topbar.jsx';
+import SummaryDashboard from './components/SummaryDashboard.jsx';
 
-// Phase 1 placeholder: confirms the scaffold runs and the dataset loads.
-// Real UI (summary, table, filter, form) arrives in later phases.
 export default function App() {
-  return (
-    <div className="app">
-      <header className="app-header">
-        <h1>Spendlens</h1>
-        <p className="tagline">Multi-currency expense dashboard</p>
-      </header>
+  const [active, setActive] = useState('dashboard');
 
-      <main>
-        <p className="scaffold-note">
-          ✅ Scaffold is running. Loaded <strong>{EXPENSES.length}</strong> expenses
-          across <strong>{Object.keys(RATES).length}</strong> supported currencies.
-        </p>
-        <p className="scaffold-note muted">
-          Next: Phase 2 builds the currency conversion logic.
-        </p>
+  // In-memory expenses (the add-form in a later phase will append here).
+  const [expenses] = useState(EXPENSES);
+
+  const navigate = (id) => {
+    setActive(id);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  return (
+    <div className="shell">
+      <Sidebar active={active} onNavigate={navigate} />
+      <Topbar active={active} />
+
+      <main className="main">
+        {/* Dashboard / Summary (Phase 3) */}
+        <section id="dashboard" className="section">
+          <div className="section-head">
+            <h2>Spending Summary</h2>
+            <p>All {expenses.length} expenses converted to USD · rates snapshot 2026-05-01</p>
+          </div>
+          <SummaryDashboard expenses={expenses} rates={RATES} />
+        </section>
+
+        {/* Placeholders for upcoming phases */}
+        <section id="expenses" className="section">
+          <div className="section-head">
+            <h2>Expenses</h2>
+            <p>Sortable table + category filter — coming in Phase 4–5</p>
+          </div>
+          <div className="card card-pad empty-state">Expense table arrives next.</div>
+        </section>
+
+        <section id="add" className="section">
+          <div className="section-head">
+            <h2>Add Expense</h2>
+            <p>Add-expense form — coming in Phase 6</p>
+          </div>
+          <div className="card card-pad empty-state">Add-expense form arrives soon.</div>
+        </section>
+
+        <section id="about" className="section">
+          <div className="section-head">
+            <h2>About &amp; Notes</h2>
+            <p>Written reflection — coming in Phase 7</p>
+          </div>
+          <div className="card card-pad empty-state">Notes &amp; reflection arrive soon.</div>
+        </section>
       </main>
     </div>
   );
