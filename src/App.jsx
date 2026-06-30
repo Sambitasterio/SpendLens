@@ -8,6 +8,7 @@ import ExpenseTable from './components/ExpenseTable.jsx';
 import CategoryFilter from './components/CategoryFilter.jsx';
 import AddExpenseForm from './components/AddExpenseForm.jsx';
 import AboutNotes from './components/AboutNotes.jsx';
+import WhatIfSlider from './components/WhatIfSlider.jsx';
 
 export default function App() {
   const [active, setActive] = useState('dashboard');
@@ -24,6 +25,10 @@ export default function App() {
 
   // Table-only category filter (null = show all). Summary stays global.
   const [activeCategory, setActiveCategory] = useState(null);
+
+  // What-if: live EUR rate (units of EUR per USD). Default = base snapshot.
+  const [eurRate, setEurRate] = useState(RATES.EUR);
+  const effectiveRates = useMemo(() => ({ ...RATES, EUR: eurRate }), [eurRate]);
 
   const categories = useMemo(
     () => [...new Set(expenses.map((e) => e.category))].sort(),
@@ -59,7 +64,18 @@ export default function App() {
             <h2>Spending Summary</h2>
             <p>All {expenses.length} expenses converted to USD · rates snapshot 2026-05-01</p>
           </div>
-          <SummaryDashboard expenses={expenses} rates={RATES} />
+          <SummaryDashboard expenses={expenses} rates={effectiveRates} />
+
+          <div className="explore-head">
+            <span>Explore</span>
+          </div>
+          <WhatIfSlider
+            expenses={expenses}
+            baseRates={RATES}
+            eurRate={eurRate}
+            onChange={setEurRate}
+            onReset={() => setEurRate(RATES.EUR)}
+          />
         </section>
 
         {/* Placeholders for upcoming phases */}
@@ -74,7 +90,7 @@ export default function App() {
             onSelect={setActiveCategory}
             counts={counts}
           />
-          <ExpenseTable expenses={filteredExpenses} rates={RATES} />
+          <ExpenseTable expenses={filteredExpenses} rates={effectiveRates} />
         </section>
 
         <section id="add" className="section">
