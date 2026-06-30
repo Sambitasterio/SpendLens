@@ -7,6 +7,7 @@ import SummaryDashboard from './components/SummaryDashboard.jsx';
 import ExpenseTable from './components/ExpenseTable.jsx';
 import CategoryFilter from './components/CategoryFilter.jsx';
 import AddExpenseForm from './components/AddExpenseForm.jsx';
+import AboutNotes from './components/AboutNotes.jsx';
 
 export default function App() {
   const [active, setActive] = useState('dashboard');
@@ -87,9 +88,9 @@ export default function App() {
         <section id="about" className="section">
           <div className="section-head">
             <h2>About &amp; Notes</h2>
-            <p>Written reflection — coming in Phase 7</p>
+            <p>Analyst reflection on the currency logic</p>
           </div>
-          <div className="card card-pad empty-state">Notes &amp; reflection arrive soon.</div>
+          <AboutNotes />
         </section>
       </main>
     </div>

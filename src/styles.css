@@ -433,6 +433,28 @@ input:focus, select:focus {
   .form-grid { grid-template-columns: 1fr; }
 }
 
+/* prose (about / notes) */
+.prose { max-width: 760px; }
+.notes-tag {
+  display: inline-block; margin-bottom: 10px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--accent);
+  background: var(--accent-soft); border: 1px solid #ffe2cc;
+  padding: 4px 10px; border-radius: 999px;
+}
+.prose-meta { color: var(--ink-muted); font-size: 0.84rem; margin: 0 0 14px; }
+.prose h4 {
+  font-size: 0.9rem; font-weight: 700; color: var(--ink);
+  margin: 18px 0 6px;
+}
+.prose p { color: var(--ink-soft); margin: 0; line-height: 1.65; }
+.prose code {
+  background: var(--surface-subtle); border: 1px solid var(--border-soft);
+  border-radius: 6px; padding: 1px 6px; font-size: 0.82em;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  color: var(--accent);
+}
+
 /* ----------------------------------------------------------------
    Responsive
    ---------------------------------------------------------------- */
