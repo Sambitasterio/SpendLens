@@ -5,7 +5,7 @@ different currencies, converts every one to USD against a fixed rate snapshot, a
 summary (category totals, overall spend, top merchants) plus a sortable, filterable transaction
 table and an add-expense form. Everything runs in the browser, with no backend and no database.
 
-**Live URL:** `<LIVE_URL>` &nbsp;·&nbsp; **Stack:** Vite + React (in-memory state)
+**Live URL:** https://spend-lens-liard.vercel.app/ &nbsp;·&nbsp; **Stack:** Vite + React (in-memory state)
 
 ---
 
