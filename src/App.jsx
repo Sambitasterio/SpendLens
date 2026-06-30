@@ -1,16 +1,36 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { RATES } from './data/rates.js';
 import { EXPENSES } from './data/expenses.js';
 import Sidebar from './components/Sidebar.jsx';
 import Topbar from './components/Topbar.jsx';
 import SummaryDashboard from './components/SummaryDashboard.jsx';
 import ExpenseTable from './components/ExpenseTable.jsx';
+import CategoryFilter from './components/CategoryFilter.jsx';
 
 export default function App() {
   const [active, setActive] = useState('dashboard');
 
   // In-memory expenses (the add-form in a later phase will append here).
   const [expenses] = useState(EXPENSES);
+
+  // Table-only category filter (null = show all). Summary stays global.
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  const categories = useMemo(
+    () => [...new Set(expenses.map((e) => e.category))].sort(),
+    [expenses]
+  );
+
+  const counts = useMemo(() => {
+    const c = { __all: expenses.length };
+    for (const e of expenses) c[e.category] = (c[e.category] || 0) + 1;
+    return c;
+  }, [expenses]);
+
+  const filteredExpenses = useMemo(
+    () => (activeCategory ? expenses.filter((e) => e.category === activeCategory) : expenses),
+    [expenses, activeCategory]
+  );
 
   const navigate = (id) => {
     setActive(id);
@@ -37,9 +57,15 @@ export default function App() {
         <section id="expenses" className="section">
           <div className="section-head">
             <h2>Expenses</h2>
-            <p>Every transaction, sortable by date or USD amount</p>
+            <p>Every transaction, sortable by date or USD amount · filter by category</p>
           </div>
-          <ExpenseTable expenses={expenses} rates={RATES} />
+          <CategoryFilter
+            categories={categories}
+            active={activeCategory}
+            onSelect={setActiveCategory}
+            counts={counts}
+          />
+          <ExpenseTable expenses={filteredExpenses} rates={RATES} />
         </section>
 
         <section id="add" className="section">
