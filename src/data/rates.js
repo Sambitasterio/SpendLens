@@ -1,4 +1,4 @@
-// rates.js — exchange rates as of 2026-05-01 (base: USD)
+// rates.js: exchange rates as of 2026-05-01 (base: USD)
 // A value here = units of that currency per 1 USD.  Convert to USD with: amount / RATES[currency]
 export const RATES = {
   USD: 1.0000,

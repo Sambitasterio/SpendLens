@@ -1,5 +1,5 @@
-// A3 written reflection (150–250 words), visible in the app per the brief.
-// NOTE: edit the wording so it sounds like you — graders want an honest,
+// A3 written reflection (150 to 250 words), visible in the app per the brief.
+// NOTE: edit the wording so it sounds like you. Graders want an honest,
 // personal reflection, not generated-sounding copy.
 export default function AboutNotes() {
   return (
@@ -16,7 +16,7 @@ export default function AboutNotes() {
         Every amount runs through one helper, <code>toUSD(amount, currency, rates)</code>, which
         divides by that currency’s rate (rates are quoted as units per&nbsp;1&nbsp;USD). I kept this
         in a single pure module on purpose, so the summary, the table, the add-form preview, and the
-        what-if slider all share identical math — there is no second place where a formula or
+        what-if slider all share identical math, so there is no second place where a formula or
         rounding rule could quietly drift. Figures are rounded to two decimals at the point of
         conversion.
       </p>

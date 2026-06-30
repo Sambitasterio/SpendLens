@@ -1,4 +1,4 @@
-// expenses.js — 20 sample expense records (the dataset / source of truth)
+// expenses.js: 20 sample expense records (the dataset / source of truth)
 export const EXPENSES = [
   { id: 1,  date: '2026-02-03', merchant: 'Indigo Airlines',      amount: 8200,   currency: 'INR', category: 'Travel'        },
   { id: 2,  date: '2026-02-10', merchant: 'Slack Pro',            amount: 12.50,  currency: 'USD', category: 'Software'      },

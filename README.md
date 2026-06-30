@@ -1,9 +1,9 @@
-# Spendlens — Multi-Currency Expense Dashboard
+# Spendlens · Multi-Currency Expense Dashboard
 
 A small, hosted expense dashboard for Spendlens. It takes a set of expenses recorded in
 different currencies, converts every one to USD against a fixed rate snapshot, and shows a clean
 summary (category totals, overall spend, top merchants) plus a sortable, filterable transaction
-table and an add-expense form. Everything runs in the browser — no backend, no database.
+table and an add-expense form. Everything runs in the browser, with no backend and no database.
 
 **Live URL:** `<LIVE_URL>` &nbsp;·&nbsp; **Stack:** Vite + React (in-memory state)
 
@@ -18,7 +18,7 @@ npm install
 npm run dev
 ```
 
-That's it — open the URL Vite prints (default `http://localhost:5173`).
+That's it. Open the URL Vite prints (default `http://localhost:5173`).
 
 Other scripts:
 
@@ -45,8 +45,8 @@ npm run preview   # serve the production build locally
     ├── App.jsx             # app shell + state (expenses, filter, what-if rate)
     ├── styles.css          # the whole design system (white + orange theme)
     ├── data/
-    │   ├── rates.js        # RATES — fixed USD exchange-rate snapshot (source of truth)
-    │   └── expenses.js     # EXPENSES — the 20 sample transactions
+    │   ├── rates.js        # RATES: fixed USD exchange-rate snapshot (source of truth)
+    │   └── expenses.js     # EXPENSES: the 20 sample transactions
     ├── lib/
     │   ├── currency.js     # all money math: toUSD, summarize, topMerchants, round2
     │   └── format.js       # display helpers: fmtUSD, category colors
@@ -92,20 +92,20 @@ table, and slider never disagree.
 - **Rates are quoted per 1 USD** (e.g. `INR: 83.47` = 83.47 INR per USD). Convert by dividing.
 - **Categories** come from the data; the add-form offers the existing set. New free-text categories
   aren't supported by the filter chips.
-- **What-if scope:** the slider adjusts only the EUR rate (range 0.80–1.10), per the brief. The
+- **What-if scope:** the slider adjusts only the EUR rate (range 0.80 to 1.10), per the brief. The
   dataset has a single EUR expense, so the headline swing is small by design.
 
 ---
 
 ## Known limitations & what I'd do with another 4 hours
 
-1. **No persistence** — add `localStorage` (≈30 min) so added expenses survive a refresh; the
+1. **No persistence.** Add `localStorage` (about 30 min) so added expenses survive a refresh; the
    in-memory model is a deliberate first step toward a real API.
-2. **No edit/delete** — the table is add-only. I'd add row editing/removal and recompute totals.
+2. **No edit/delete.** The table is add-only. I'd add row editing/removal and recompute totals.
 3. **Long merchant names / very large amounts** can stretch the table on small screens; it scrolls
    horizontally but I'd add truncation + tooltips.
-4. **What-if is EUR-only** — I'd generalise the adjuster to any currency with a dropdown.
-5. **No automated tests in the repo** — the logic was validated against expected figures during
+4. **What-if is EUR-only.** I'd generalise the adjuster to any currency with a dropdown.
+5. **No automated tests in the repo.** The logic was validated against expected figures during
    development; I'd commit a small test file for `lib/currency.js` (conversions, null-rate guard,
    summary totals) so the math is protected against future edits.
 

@@ -13,7 +13,7 @@ import WhatIfSlider from './components/WhatIfSlider.jsx';
 export default function App() {
   const [active, setActive] = useState('dashboard');
 
-  // In-memory expenses — the add-form appends here (no persistence needed).
+  // In-memory expenses. The add-form appends here (no persistence needed).
   const [expenses, setExpenses] = useState(EXPENSES);
 
   const addExpense = (expense) => {
@@ -96,7 +96,7 @@ export default function App() {
         <section id="add" className="section">
           <div className="section-head">
             <h2>Add Expense</h2>
-            <p>Record a new transaction — reflected in the table and summary immediately</p>
+            <p>Record a new transaction, reflected in the table and summary immediately</p>
           </div>
           <AddExpenseForm rates={RATES} categories={categories} onAdd={addExpense} />
         </section>

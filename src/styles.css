@@ -1,5 +1,5 @@
 /* ============================================================
-   Spendlens design system — premium white + orange SaaS theme
+   Spendlens design system: premium white + orange SaaS theme
    ============================================================ */
 
 :root {
@@ -481,7 +481,7 @@ input:focus, select:focus {
 .delta.down { color: var(--success); font-weight: 600; }
 .delta.neutral { color: var(--ink-muted); }
 
-/* range input — orange themed */
+/* range input (orange themed) */
 input[type='range'] {
   -webkit-appearance: none; appearance: none;
   width: 100%; height: 6px; border-radius: 999px;

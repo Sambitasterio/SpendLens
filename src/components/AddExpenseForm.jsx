@@ -140,7 +140,7 @@ export default function AddExpenseForm({ rates, categories, onAdd }) {
 
       {justAdded && (
         <div className="add-success">
-          ✓ Added <strong>{justAdded.merchant}</strong> — {fmtUSD(justAdded.usd)} · it’s now in the table and summary.
+          ✓ Added <strong>{justAdded.merchant}</strong>, {fmtUSD(justAdded.usd)} · it’s now in the table and summary.
         </div>
       )}
     </div>

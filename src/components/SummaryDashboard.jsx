@@ -16,8 +16,8 @@ export default function SummaryDashboard({ expenses, rates }) {
     { label: 'Transactions', value: String(txnCount), meta: `${categories.length} categories`, icon: '☰', tone: 'blue' },
     {
       label: 'Top Category',
-      value: topCategory ? topCategory.category : '—',
-      meta: topCategory ? <strong>{fmtUSD(topCategory.total)}</strong> : '—',
+      value: topCategory ? topCategory.category : 'n/a',
+      meta: topCategory ? <strong>{fmtUSD(topCategory.total)}</strong> : 'n/a',
       icon: '◆',
       tone: '',
     },

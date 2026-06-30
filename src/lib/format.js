@@ -1,8 +1,8 @@
-// format.js — shared display helpers so formatting stays consistent everywhere.
+// format.js: shared display helpers so formatting stays consistent everywhere.
 
 /** Format a number as USD, e.g. 1992.14 -> "$1,992.14". */
 export function fmtUSD(n) {
-  if (n == null || !Number.isFinite(n)) return '—';
+  if (n == null || !Number.isFinite(n)) return 'n/a';
   return n.toLocaleString('en-US', {
     style: 'currency',
     currency: 'USD',

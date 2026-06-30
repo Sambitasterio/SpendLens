@@ -1,4 +1,4 @@
-// currency.js — the single source of truth for all money math.
+// currency.js: the single source of truth for all money math.
 // Every view (summary, table, form, what-if slider) MUST use these helpers so
 // figures stay consistent. Rounding policy: round each value to 2dp, then sum
 // the rounded values (see PROJECT_SPEC §9). Applied via round2() in one place.
@@ -12,7 +12,7 @@ export function round2(n) {
  * Convert an amount in `currency` to USD using the rate table.
  * Rate = units of currency per 1 USD, so usd = amount / rate.
  * Returns `null` (never NaN) when the rate is missing/invalid or the amount is
- * not a finite number — callers skip/flag null rather than poisoning totals.
+ * not a finite number, so callers skip/flag null rather than poisoning totals.
  */
 export function toUSD(amount, currency, rates) {
   const rate = rates[currency];
