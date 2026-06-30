@@ -6,12 +6,20 @@ import Topbar from './components/Topbar.jsx';
 import SummaryDashboard from './components/SummaryDashboard.jsx';
 import ExpenseTable from './components/ExpenseTable.jsx';
 import CategoryFilter from './components/CategoryFilter.jsx';
+import AddExpenseForm from './components/AddExpenseForm.jsx';
 
 export default function App() {
   const [active, setActive] = useState('dashboard');
 
-  // In-memory expenses (the add-form in a later phase will append here).
-  const [expenses] = useState(EXPENSES);
+  // In-memory expenses — the add-form appends here (no persistence needed).
+  const [expenses, setExpenses] = useState(EXPENSES);
+
+  const addExpense = (expense) => {
+    setExpenses((prev) => {
+      const nextId = prev.reduce((max, e) => Math.max(max, e.id), 0) + 1;
+      return [...prev, { ...expense, id: nextId }];
+    });
+  };
 
   // Table-only category filter (null = show all). Summary stays global.
   const [activeCategory, setActiveCategory] = useState(null);
@@ -71,9 +79,9 @@ export default function App() {
         <section id="add" className="section">
           <div className="section-head">
             <h2>Add Expense</h2>
-            <p>Add-expense form — coming in Phase 6</p>
+            <p>Record a new transaction — reflected in the table and summary immediately</p>
           </div>
-          <div className="card card-pad empty-state">Add-expense form arrives soon.</div>
+          <AddExpenseForm rates={RATES} categories={categories} onAdd={addExpense} />
         </section>
 
         <section id="about" className="section">
