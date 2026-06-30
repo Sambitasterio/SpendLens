@@ -264,6 +264,22 @@ table.data tbody tr:last-child td { border-bottom: none; }
 .num { text-align: right; font-variant-numeric: tabular-nums; }
 .strong-ink { color: var(--ink); font-weight: 600; }
 
+/* sortable column header */
+.th-sort {
+  background: transparent; border: none; cursor: pointer;
+  font: inherit; color: inherit; text-transform: inherit;
+  letter-spacing: inherit; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0; transition: color 0.18s ease;
+}
+.th-sort:hover { color: var(--accent); }
+.th-sort.active { color: var(--accent); }
+.th-arrow {
+  font-size: 0.85rem; opacity: 0.8;
+  display: inline-grid; place-items: center;
+  width: 14px;
+}
+
 /* rank badge */
 .rank {
   display: inline-grid; place-items: center;

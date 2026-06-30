@@ -4,6 +4,7 @@ import { EXPENSES } from './data/expenses.js';
 import Sidebar from './components/Sidebar.jsx';
 import Topbar from './components/Topbar.jsx';
 import SummaryDashboard from './components/SummaryDashboard.jsx';
+import ExpenseTable from './components/ExpenseTable.jsx';
 
 export default function App() {
   const [active, setActive] = useState('dashboard');
@@ -36,9 +37,9 @@ export default function App() {
         <section id="expenses" className="section">
           <div className="section-head">
             <h2>Expenses</h2>
-            <p>Sortable table + category filter — coming in Phase 4–5</p>
+            <p>Every transaction, sortable by date or USD amount</p>
           </div>
-          <div className="card card-pad empty-state">Expense table arrives next.</div>
+          <ExpenseTable expenses={expenses} rates={RATES} />
         </section>
 
         <section id="add" className="section">
